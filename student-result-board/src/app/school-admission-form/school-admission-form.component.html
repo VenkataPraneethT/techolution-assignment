@@ -1,0 +1,46 @@
+
+<div class="container" >
+    <h1>School Admission Form</h1>
+
+    <p *ngIf="formSubmitted" [ngClass] = "'success'">
+      Form submitted successfully.
+    </p>
+    <form [formGroup]="admissionForm" (ngSubmit)="onFormSubmit()">
+      <div class="form-group">
+          <label>Name</label>
+           <input formControlName="studentName" class="form-control">
+    		   <div *ngIf="admissionForm.controls.studentName.errors?.maxlength" [ngClass] = "'error'">
+    			  Name can contain maximum of 20 characters.
+    		   </div>
+      </div>
+      <div class="form-group">
+          <label>Last Name</label>
+           <input formControlName="studentLastName" class="form-control">
+          <div *ngIf="admissionForm.controls.studentLastName.errors?.maxlength " [ngClass] = "'error'">
+           Last name can contain maximum of 20 characters.
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Class</label>
+           <input formControlName="className" class="form-control">
+          <div *ngIf="admissionForm.controls.className.errors?.pattern " [ngClass] = "'error'">
+            Class can contain only numbers and characters
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Year of passing</label>
+           <input formControlName="yearOfPassing" class="form-control">
+          <div *ngIf="admissionForm.controls.yearOfPassing.errors?.pattern || admissionForm.controls.yearOfPassing.errors?.maxlength || (yearOfPassing.value > 2017 )" [ngClass] = "'error'">
+            Years of passing cannot be greater than 2017
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Percentage of marks</label>
+           <input formControlName="perOfMarks" class="form-control">
+          <div *ngIf="admissionForm.controls.perOfMarks.errors?.pattern && admissionForm.controls.perOfMarks > 2017 " [ngClass] = "'error'">
+            Percentage of marks can contain only numbers
+          </div>
+      </div>
+        <button type="submit" class="btn btn-success" [disabled]="admissionForm.invalid ">Submit</button>
+    </form>
+</div>

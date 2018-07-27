@@ -1,0 +1,25 @@
+
+
+  <div class = "container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="4">Students Result Board</th>
+        </tr>
+        <tr>
+          <th><i>Student Name</i></th>
+          <th><i>Roll Number</i></th>
+          <th><i>Total Marks</i></th>
+          <th><i>Status</i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentsResults">
+          <td [ngClass]="{'ele-green' : student.status == 'Topper', 'ele-red' : student.status == 'Fail'}">{{ student.name }}</td>
+          <td [ngClass]="{'ele-green' : student.status == 'Topper',  'ele-red' : student.status == 'Fail'}">{{ student.rollNumber }}</td>
+          <td [ngClass]="{'ele-green' : student.status == 'Topper' ,  'ele-red' : student.status == 'Fail'}">{{ student.totalMarks }}</td>
+          <td [ngClass]="{'ele-green' : student.status == 'Topper' ,  'ele-red' : student.status == 'Fail'}">{{ student.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
